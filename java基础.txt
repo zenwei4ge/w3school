@@ -1,0 +1,20 @@
+java开发环境
+            jre：java运行环境
+            jdk:java开发工具包
+java基础语法
+            枚举: enum FreshJuiceSize{ SMALL, MEDIUM , LARGE };
+                  FreshJuiceSize size=FreshJuiceSize.MEDIUM; 
+            关键字:  native	本地，原生方法（非Java实现）
+                    strictfp	严格,精准
+                    synchronized	线程,同步
+                    transient	短暂
+                    volatile	易失
+                    goto	是关键字，但不能使用,保留关键字
+                    const	是关键字，但不能使用
+java对象和类
+            源文件声明规则：
+                          一个源文件只能有一个public类
+                          源文件名必须与public类名保持一致
+                          如果一个类被定义在包内，pakage应该写在首行
+                          import语句应该在包声明和类定义之间
+          
