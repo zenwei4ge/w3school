@@ -1,0 +1,32 @@
+简介： 
+      1.无需加载全部网页动态更新部分网页的技术
+      2.异步javascript和XML
+      3.通过在后台与服务器进行少量数据交换，AJAX 可以使网页实现异步更新
+创建XMLHttpRequest对象： 
+                        XHR对象： 用于在后台与服务器交换数据
+                        语法： variable=new XMLHttpRequest();
+                              xmlhttp=new ActiveXObject("Microsoft.XMLHTTP"); // code for IE6, IE5
+向服务器发送请求： 
+                 XHR对象open()方法：
+                                    open(method,url,async);
+                                    method：请求的类型；GET 或 POST
+                                    url：文件在服务器上的位置
+                                    async：true（异步）或 false（同步）
+                 XHR对象send()方法：
+                                    send(string);
+                                    string：仅用于 POST 请求;get请求时不需要该参数
+服务器响应
+                 XHR对象的responseText属性:获得字符串形式的响应数据
+                 XHR对象的responseXML属性:获得 XML 形式的响应数据
+ onreadystatechange事件
+                        XHR三个重要属性：1.readyState  存有 XMLHttpRequest 的状态。从 0 到 4 发生变化。
+                                                      0: 请求未初始化
+                                                      1: 服务器连接已建立
+                                                      2: 请求已接收
+                                                      3: 请求处理中
+                                                      4: 请求已完成，且响应已就绪
+                                                      
+                                        2.status  200: "OK"
+                                                  404: 未找到页面
+                                        3.readystatechange 存储函数，当 readyState 属性改变时，就会调用该函数
+                                        
