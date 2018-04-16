@@ -78,4 +78,159 @@ java修饰符
                    ||
                    !
            条件运算符 (expression) ? value if true : value if false
-           instanceof 运算符 ( Object reference variable ) instanceof  (class/interface type)       
+           instanceof 运算符 ( Object reference variable ) instanceof  (class/interface type)   
+java循环结构
+            do...while循环至少执行一次，即使不满足条件
+            增强for循环:        for(声明语句:表达式)//声明语句类型必须和数组元素类型匹配,表达式为数组名
+java分支结构
+            switch(expresion){
+             case value:      break;
+             default:    ;
+            }
+ java Number类
+               所有的包装类（Integer、Long、Byte、Double、Float、Short）都是抽象类 Number 的子类。
+               当内置数据类型被当作对象使用的时候，编译器会把内置类型装箱为包装类。
+               相似的，编译器也可以把一个对象拆箱为内置类型。
+java Math类              
+            floor:向下取整
+            round：+0.5后向下取整
+            ceil:向上取整
+Java Character 类
+Java String 类  
+               字符串长度length
+               连接字符串str1.concat(str2),str1+str2
+Java StringBuffer 和 StringBuilder 类
+               StringBuilder 的方法不是线程安全的（不能同步访问）
+               StringBuilder 相较于 StringBuffer 有速度优势
+               StringBuffer 方法
+                                 	public StringBuffer append(String s)//将指定的字符串追加到此字符序列
+                                  	public StringBuffer reverse()// 将此字符序列用其反转形式取代
+                                   	public delete(int start, int end)//移除此序列的子字符串中的字符。
+                                    	public insert(int offset, int i)//将 int 参数的字符串表示形式插入此序列中
+                                     	replace(int start, int end, String str)//使用给定 String 中的字符替换此序列的子字符串中的字符。
+java数组          
+        声明 dataType []arrayName;
+        创建 dataType []arrayName=new dataType[];
+        加强循环foreach
+        数组作为函数参数，声明时dataType[] arrayName
+        作为函数返回值，dataType[]
+        多维数组：type arrayName[][] = new type[arraylenght1][arraylenght2]
+ Arrays类
+          提供的所有方法都是静态的
+          给数组赋值：通过 fill 方法。
+          对数组排序：通过 sort 方法,按升序。
+          比较数组：通过 equals 方法比较数组中元素值是否相等。
+          查找数组元素：通过 binarySearch 方法能对排序好的数组进行二分查找法操作。
+ Java日期时间
+             Data类两个构造函数     Data()使用当前时间初始化Data类
+                                   Data（long millisec）参数为1970年1月1日起至今的毫秒数
+             日期比较三种方法        用getTime（）方法获取两个日期，数值为70年至今的毫秒数，再比较
+                                   使用方法before(),after(),equals()
+                                   compareTo()方法
+             使用SimpleDataFormat格式化日期
+                                    SimpleDateFormat ft = new SimpleDateFormat ("E yyyy.MM.dd 'at' hh:mm:ss a zzz");
+                                    System.out.println("Current Date: " + ft.format(dNow));
+             使用printf格式化日期
+                                    使用两个字母格式，它以 %t 开头
+                                    示例
+                                          //c的使用  
+                                          System.out.printf("全部日期和时间信息：%tc%n",date);          
+                                          //f的使用  
+                                          System.out.printf("年-月-日格式：%tF%n",date);  
+                                          //d的使用  
+                                          System.out.printf("月/日/年格式：%tD%n",date);  
+                                          //r的使用  
+                                          System.out.printf("HH:MM:SS PM格式（12时制）：%tr%n",date);  
+                                          //t的使用  
+                                          System.out.printf("HH:MM:SS格式（24时制）：%tT%n",date);  
+                                          //R的使用  
+                                          System.out.printf("HH:MM格式（24时制）：%tR",date);  
+              Java休眠       Thread.sleep(1000*3);//休眠三秒
+              测量时间         long start = System.currentTimeMillis( );
+                              Thread.sleep(5*60*10);
+                              long end = System.currentTimeMillis( );
+                              long diff = end - start;
+              Calendar类
+                              创建一个代表系统当前日期的Calendar对象
+                              Calendar c = Calendar.getInstance();//默认是当前日期
+                              创建一个指定日期的Calendar对象
+                              //创建一个代表2009年6月12日的Calendar对象
+                              Calendar c1 = Calendar.getInstance();
+                              c1.set(2009, 6 - 1, 12);
+                              Set设置
+                                      public final void set(int year,int month,int date);
+                                      public void set(int field,int value);
+                                      c1.set(Calendar.DATE,10);
+                              Add设置
+                                      c1.add(Calendar.DATE, 10);
+                              对象信息的获得
+                                     int year = c1.get(Calendar.YEAR);
+Java正则表达式
+              java.util.regex 包主要包括以下三个类
+                              Pattern 类：创建一个 Pattern 对象，你必须首先调用其公共静态编译方法，它返回一个 Pattern 对象。该方法接受一个正则表                                          达式作为它的第一个参数。
+                              Matcher 类：是对输入字符串进行解释和匹配操作的引擎。与Pattern 类一样，Matcher 也没有公共构造方法。你需要调用                                                 Pattern 对象的 matcher 方法来获得一个 Matcher 对象。
+                              PatternSyntaxException：
+              示例
+                    String content = "I am noob " +
+                      "from runoob.com.";
+
+                    String pattern = ".*runoob.*";
+
+                    boolean isMatch = Pattern.matches(pattern, content);          
+              Matcher 类方法
+                            索引方法    public int start() 
+                                       public int start(int group)
+                                       public int end()
+                                       public int end(int group)
+                             研究方法  public boolean lookingAt() //尝试将从区域开头开始的输入序列与该模式匹配。
+                                      public boolean find() //尝试查找与该模式匹配的输入序列的下一个子序列
+                                      public boolean find(int start）//重置此匹配器，然后尝试查找匹配该模式、从指定索引开始的输入序列的下一个子                                       序列。
+                                      public boolean matches() //尝试将整个区域与模式匹配。
+                             替换方法
+                                      public String replaceAll(String replacement) //替换模式与给定替换字符串相匹配的输入序列的每个子序列
+                                      	public String replaceFirst(String replacement//替换模式与给定替换字符串匹配的输入序列的第一个子序列。
+                             示例         
+                                       Pattern p=Pattern.compail(regex);
+                                       Matcher m=p.matcher(content);
+Java方法                                      
+         通过值传递参数
+                       示例
+                           swap(num1, num2);
+                           System.out.println("交换后 num1 的值为：" +
+                            num1 + " ，num2 的值为：" + num2);
+                           public static void swap(int n1, int n2) {
+                            int temp = n1;
+                            n1 = n2;
+                            n2 = temp;
+                          }//值没有交换，实参的值没有改变
+         命令行参数
+                   $ javac CommandLine.java 
+                   $ java CommandLine this is a command line 200 -100
+                   args[0]: this
+          可变参数
+                   可变参数的声明：typeName... parameterName
+                   一个方法中只能指定一个可变参数，它必须是方法的最后一个参数。
+                   示例  
+                        函数声明public void printMax(double ... numbers){}
+                        函数调用 printMax(34, 3, 3, 2, 56.5);
+                                printMax(new double[]{1, 2, 3});
+Java流 ，文件和IO
+                 读取控制台输入
+                               为了获得一个绑定到控制台的字符流，你可以把 System.in 包装在一个 BufferedReader 对象中来创建一个字符流
+                               创建 BufferedReader: BufferedReader br = new BufferedReader(new  InputStreamReader(System.in));
+                 读取一个字符
+                              int read( ) throws IOException//调用 read() 方法，它从输入流读取一个字符并把该字符作为整数值返回
+                 从控制台读取字符串 
+                                   需要使用 BufferedReader 的 readLine() 方法
+                                   一般格式是：String readLine( ) throws IOException
+                  控制台输出
+                            控制台的输出由 print( ) 和 println() 完成。这些方法都由类 PrintStream 定义，System.out 是该类对象的一个引用。
+                  读写文件
+                          FileInputStream
+                                           创建对象:
+                                                    InputStream f = new FileInputStream("C:/java/hello");//使用字符串类型的文件名来创建一个                                                      输入流对象来读取文件
+                                                    File f = new File("C:/java/hello");
+                                                    InputStream out = new FileInputStream(f);//使用一个文件对象来创建一个输入流对象来读取文                                                       件。
+                                            方法：
+                                                     public void close() throws IOException{}//关闭此文件输入流并释放与此流有关的所有系统资                                                        源。抛出IOException异常。
+                                      
