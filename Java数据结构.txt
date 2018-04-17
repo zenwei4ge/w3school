@@ -1,0 +1,87 @@
+枚举    Enumeration接口      import java.util.Enumeration;
+        方法     hasMoreElements()//测试此枚举是否包含更多的元素
+                nextElement()//如果此枚举对象至少还有一个可提供的元素，则返回此枚举的下一个元素
+        示例    
+                Enumeration <String> days=new Enumeration<String>();
+                Vector<String> dayNames=new Vector<String>();
+                dayNames.add("sunday");
+                dayNames.add("Monday");
+                dayNames.add("Tuesday");
+                dayNames.add("Wednesday");
+                dayNames.add("Thursday");
+                dayNames.add("Friday");
+                dayNames.add("Saturday");
+                days=dayNames.Elements();
+                if(days.hasMoreElements()){
+                  System.out.println(days.nextElement();)
+                }
+BitSet类  特殊数组保存位值
+          实现了一组可以单独设置和清除的位或标志
+          处理一组布尔值的时候非常有用，你只需要给每个值赋值一"位"，然后对位进行适当的设置或清除，就可以对布尔值进行操作了。
+向量Vector  和传统数组非常相似，但是Vector的大小能根据需要动态的变化
+            Vector对象的元素也能通过索引访问
+            在创建对象的时候不必给对象指定大小，它的大小会根据需要动态的变化
+            构造方法
+                    1.Vector();//构造默认大小向量，默认大小10
+                    2.Vector(int size);//构造指定大小向量
+                    3.Vector(int size,int increment)//增量表示向量每次增加的元素个数
+                    4.Vector(Collection c)//创建一个包含集合c元素的向量
+            方法    void add(int index, Object element) 
+                    boolean add(Object o) 
+                    boolean addAll(Collection c) 
+                    boolean addAll(int index, Collection c) 
+                    void addElement(Object obj) 
+                    int capacity() 
+                    void clear() 
+                    boolean contains(Object elem) 
+                    Object elementAt(int index) 
+                    Object get(int index)
+栈          import java.util.*;
+            构造方法 Stack()
+            是Vector的子类
+            方法：      boolean empty() 
+                        Object peek( )
+                        Object pop( )
+                        Object push(Object element)
+                        int search(Object element)
+Java Dictionary 类          是一个抽象类，用来存储键/值对，作用和Map类相似
+Java Map 接口       Map接口中键和值一一映射. 可以通过键来获取值
+                   方法：         void clear( )
+                                 boolean containsKey(Object k)
+                                 boolean containsValue(Object v)
+                                 Set entrySet( )
+                                 Object get(Object k)
+                                 boolean isEmpty( )
+                                 Object put(Object k, Object v)
+                                 Object remove(Object k)
+                                 int size( )
+  Java Hashtable 类
+                               实现了Map接口
+                               在哈希表中存储键/值对。当使用一个哈希表，要指定用作键的对象，以及要链接到该键的值。
+                                  然后，该键经过哈希处理，所得到的散列码被用作存储在该表中值的索引
+                               构造方法
+                                  Hashtable()
+                                  Hashtable(int size)
+                                  Hashtable(int size,float fillRatio)
+                                  Hashtable(Map m)
+                               方法   与上相似
+                               
+  Java Properties 类           继承于 Hashtable.表示一个持久的属性集.属性列表中每个键及其对应值都是一个字符串
+                               构造方法
+                                        Properties()
+                                        Properties(Properties propDefault)
+                               方法      
+                                        String getProperty(String key)
+                                        String getProperty(String key, String defaultProperty)
+                                        void list(PrintStream streamOut)
+                                        void load(InputStream streamIn) throws IOException
+                                        Enumeration propertyNames( )
+                                        Object setProperty(String key, String value)
+                                        void put(String key, String value)
+ 迭代器 iterator 
+                                  1) 使用方法 iterator() 要求容器返回一个 Iterator。第一次调用 Iterator 的 next() 方法时，它返回序列的第一个元                                       素。注意：iterator() 方法是 java.lang.Iterable 接口,被 Collection 继承。
+                                  (2) 使用 next() 获得序列中的下一个元素。
+                                  (3) 使用 hasNext() 检查序列中是否还有元素。
+                                  (4) 使用 remove() 将迭代器新返回的元素删除。
+           
+                
