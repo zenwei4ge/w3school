@@ -1,0 +1,28 @@
+泛型方法
+           该方法在调用时可以接收不同类型的参数。根据传递给泛型方法的参数类型，编译器适当地处理每一个方法调用。
+           定义泛型方法的规则：
+                             所有泛型方法声明都有一个类型参数声明部分（由尖括号分隔），该类型参数声明部分在方法返回类型之前
+                             每一个类型参数声明部分包含一个或多个类型参数，参数间用逗号隔开
+                             类型参数能被用来声明返回值类型
+                             一个泛型参数，也被称为一个类型变量，是用于指定一个泛型类型名称的标识符
+                             类型参数只能代表引用型类型，不能是原始类型（像int,double,char的等）
+           示例     
+                        public static <E>void printArray(E Array[]){
+                          for(E element:Array){
+                          System.out.println(element);
+                          }               
+                        }
+                        Integer[] intArray = { 1, 2, 3, 4, 5 };
+                        Double[] doubleArray = { 1.1, 2.2, 3.3, 4.4 };
+                        Character[] charArray = { 'H', 'E', 'L', 'L', 'O' };
+                        printArray(ineArray);
+                        printArray( doubleArray );
+                         printArray( charArray ); 
+            有界的类型参数
+                          声明一个有界的类型参数，首先列出类型参数的名称，后跟extends关键字，最后紧跟它的上界
+                          示例     public static <T extends Comparable<T>> T maximum(T x, T y, T z)
+泛型类
+      在类名后面添加了类型参数声明部分
+      类的初始化时必须显示的给出具体类型
+
+                 
