@@ -1,0 +1,9 @@
+javadoc标签
+            @author
+            @param
+            @return
+注释的实例：
+              /*** 这个类绘制一个条形图
+              * @author runoob
+              * @version 1.2
+              */
