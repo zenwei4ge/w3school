@@ -1,0 +1,96 @@
+Socket 编程
+            使用套接字建立TCP连接时步骤
+                      服务器实例化一个 ServerSocket 对象，表示通过服务器上的端口通信。
+                      服务器调用 ServerSocket 类的 accept() 方法，该方法将一直等待，直到客户端连接到服务器上给定的端口。
+                      服务器正在等待时，一个客户端实例化一个 Socket 对象，指定服务器名称和端口号来请求连接。
+                      Socket 类的构造函数试图将客户端连接到指定的服务器和端口号。如果通信被建立，则在客户端创建一个 Socket 对象能够与服务器进行通信。
+                      在服务器端，accept() 方法返回服务器上一个新的 socket 引用，该 socket 连接到客户端的 socket。
+             每一个socket都有一个输出流和一个输入流，客户端的输出流连接到服务器端的输入流，而客户端的输入流连接到服务器端的输出流
+             读输入流，写输出流
+             示例
+                  //客户端
+                  // 文件名 GreetingClient.java
+ 
+                  import java.net.*;
+                  import java.io.*;
+
+                  public class GreetingClient
+                  {
+                     public static void main(String [] args)
+                     {
+                        String serverName = args[0];
+                        int port = Integer.parseInt(args[1]);
+                        try
+                        {
+                           System.out.println("连接到主机：" + serverName + " ，端口号：" + port);
+                           Socket client = new Socket(serverName, port);
+                           System.out.println("远程主机地址：" + client.getRemoteSocketAddress());
+                           OutputStream outToServer = client.getOutputStream();
+                           DataOutputStream out = new DataOutputStream(outToServer);
+
+                           out.writeUTF("Hello from " + client.getLocalSocketAddress());
+                           InputStream inFromServer = client.getInputStream();
+                           DataInputStream in = new DataInputStream(inFromServer);
+                           System.out.println("服务器响应： " + in.readUTF());
+                           client.close();
+                        }catch(IOException e)
+                        {
+                           e.printStackTrace();
+                        }
+                     }
+                  }
+                  
+                  //服务器端
+                  // 文件名 GreetingServer.java
+ 
+                    import java.net.*;
+                    import java.io.*;
+
+                    public class GreetingServer extends Thread
+                    {
+                       private ServerSocket serverSocket;
+
+                       public GreetingServer(int port) throws IOException
+                       {
+                          serverSocket = new ServerSocket(port);
+                          serverSocket.setSoTimeout(10000);
+                       }
+
+                       public void run()
+                       {
+                          while(true)
+                          {
+                             try
+                             {
+                                System.out.println("等待远程连接，端口号为：" + serverSocket.getLocalPort() + "...");
+                                Socket server = serverSocket.accept();
+                                System.out.println("远程主机地址：" + server.getRemoteSocketAddress());
+                                DataInputStream in = new DataInputStream(server.getInputStream());
+                                System.out.println(in.readUTF());
+                                DataOutputStream out = new DataOutputStream(server.getOutputStream());
+                                out.writeUTF("谢谢连接我：" + server.getLocalSocketAddress() + "\nGoodbye!");
+                                server.close();
+                             }catch(SocketTimeoutException s)
+                             {
+                                System.out.println("Socket timed out!");
+                                break;
+                             }catch(IOException e)
+                             {
+                                e.printStackTrace();
+                                break;
+                             }
+                          }
+                       }
+                       public static void main(String [] args)
+                       {
+                          int port = Integer.parseInt(args[0]);
+                          try
+                          {
+                             Thread t = new GreetingServer(port);
+                             t.run();
+                          }catch(IOException e)
+                          {
+                             e.printStackTrace();
+                          }
+                       }
+                    }
