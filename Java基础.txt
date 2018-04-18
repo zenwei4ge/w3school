@@ -280,6 +280,10 @@ Java流 ，文件和IO
 
                                                       fip.close();
                                                       // 关闭输入流,释放系统资源
+                Java Scanner 类
+                             可以通过 Scanner 类来获取用户的输入
+                             创建 Scanner 对象的基本语法：Scanner s = new Scanner(System.in);
+                             通过 Scanner 类的 next() 与 nextLine() 方法获取输入的字符串，在读取前我们一般需要 使用 hasNext 与 hasNextLine 判                                 断是否还有输入的数据
                 文件和IO      import java.io.File;
                              创建目录       File类中有两个方法可以用来创建文件夹：
                                                  mkdir( )方法创建一个文件夹，成功则返回true，失败则返回false。
